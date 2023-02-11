@@ -7,33 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./davidshimjs-qrcodejs-04f46c6/qrcode.min.js"></script>
+    <style>
+       ul{
+        display: flex;
+        text-align: center;
+        list-style: none;
+       }
+        .qr-container>img{
+            width: 100px;
+            margin: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <ul>
-        <li qrdata="https://blog.fmujie.cn/">1</li>
-        <li qrdata="https://api.fmujie.cn/">2</li>
-        <li qrdata="https://www.fmujie.cn/">3</li>
-        <li qrdata="https://www.fmujie.cn/">4</li>
+        <li class="qr-container" qrdata="https://blog.fmujie.cn/">1</li>
+        <li class="qr-container" qrdata="https://api.fmujie.cn/">2</li>
+        <li class="qr-container" qrdata="https://www.fmujie.cn/">3</li>
+        <li class="qr-container" qrdata="https://www.fmujie.cn/">4</li>
     </ul>
 
-
-
     <script>
-
-
         window.onload = () => {
-            console.log('%cmain.js line:1 "onload"', 'color: #26bfa5;', "onload");
+            // 获取所有需要 生成二维码的元素
             let doms = document.querySelectorAll('[qrdata]')
-            console.log('%cmain.js line:4 doms', 'color: #26bfa5;', doms);
             doms.forEach((i) => {
-                console.log('%cmain.js line:6 i', 'color: #26bfa5;', i);
+                // 获取二维码内容
                 let url = i.getAttribute("qrdata")
-                console.log('%cmain.js line:8 url', 'color: #26bfa5;', url);
-                new QRCode(
-                    i,
-                    url
-                );
+                // 根据 url 生成二维码并挂载到 i
+                new QRCode(i,url);
             })
 
         }</script>
